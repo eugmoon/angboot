@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en" data-ng-app="contactsMgr" data-ng-controller="AppCtrl">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Contacts Manager</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="assets/js/controller.js"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="col-sm-6">
+            <p>{{12345 | currency}}</p>
+        </div>
+        <div class="col-sm-6">
+            <p>{{12345 | currency:'£'}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <p>{{12345.225 | number:2}}</p>
+        </div>
+        <div class="col-sm-4">
+            <p>{{'Stephen' | lowercase}} {{'Declan' | uppercase}}</p>
+        </div>
+        <div class="col-sm-4">
+            <p>{{'Lorem ipsum dolor sit amet' | limitTo:15}}</p>
+        </div>
+    </div>
+    <ul>
+        <li ng-repeat="contact in contacts | limitTo:2">
+            {{contact.name}}
+        </li>
+    <ul>
+    <div class="row">
+        <div class="col-sm-6">
+            <p>{{725508723000 | date:'yyyy'}}</p>
+        </div>
+        <div class="col-sm-6">
+            <p>{{725508723000 | date:'dd/MM/yyyy'}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <p>{{725508723000 | date:'medium'}}</p>
+        </div>
+        <div class="col-sm-4">
+            <p>{{725508723000 | date:"h 'in the morning'"}}</p>
+        </div>
+        <div class="col-sm-4">
+            <p>{{725508723000 | date:"h 'o''clock'"}}</p>
+        </div>
+    </div>
+    <ul>
+        <li ng-repeat="contact in contacts | filter:search">
+            {{contact.name}} - {{contact.phone}}
+        </li>
+    </ul>
+    <input type="text" ng-model="search">
+    <input type="text" ng-model="search.name">
+    <ul>
+        <li ng-repeat="contact in contacts | filter:{'name': search2}">
+            {{contact.name}} - {{contact.phone}}
+        </li>
+    </ul>
+    <input type="text" ng-model="search2">
+    {{contacts | json}}
+    {{'Lorem ipsum dolor sit amet' | truncate:15}}
+</body>
+</html>
